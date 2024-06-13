@@ -103,12 +103,13 @@ function validateChecksum(result) {
 }
 
 //returns a float to two decimal points for a signed/unsigned int and a multiplier
+//Don't do this beacuse toFixed(2) returns string which can't be handled by telegraf
 function bytesToFloat(byte1, byte2, multiplier, signed) {
     multiplier = multiplier === undefined || multiplier === null ? 1 : multiplier;
     if(signed) {
-        return parseFloat(toS16(byte1, byte2) * multiplier).toFixed(2);
+        return parseFloat(toS16(byte1, byte2) * multiplier);
     }
-    return parseFloat(toU16(byte1, byte2) * multiplier).toFixed(2);
+    return parseFloat(toU16(byte1, byte2) * multiplier);
 }
 
 //takes two bytes and returns 16bit signed int (-32768 to +32767)
