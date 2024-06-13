@@ -197,7 +197,7 @@ function getNTCValues(bytes, numNTCs) {
         if(i == 27 || i % 2 != 0) {
             const ntcName = `NTC${count}`;
             //temp is in 0.1K convert to celcius
-            result[ntcName] = (bytesToFloat(bytes[i], bytes[i+1], 0.1) - 273.15).toFixed(2);
+            result[ntcName] = (bytesToFloat(bytes[i], bytes[i+1], 0.1) - 273.15);
             count++;
         }
     }
